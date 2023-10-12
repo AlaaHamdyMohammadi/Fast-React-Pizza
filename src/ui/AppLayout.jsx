@@ -14,7 +14,7 @@ function AppLayout() {
       {isLoading && <Loader />}
       <Header />
       <div className=" ">
-        <main className="mx-auto w-96 ">
+        <main className="">
           <Outlet />
         </main>
       </div>
