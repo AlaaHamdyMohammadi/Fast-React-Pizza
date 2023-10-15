@@ -28,7 +28,7 @@ async function fetchAddress() {
 */
 
 const initialState = {
-  username: 'Alaa with Redux',
+  username: '',
 };
 
 const userSlice = createSlice({

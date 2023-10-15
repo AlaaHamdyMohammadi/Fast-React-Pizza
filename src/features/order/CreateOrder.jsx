@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Form, redirect, useActionData, useNavigation } from 'react-router-dom';
 import { createOrder } from '../../services/apiRestaurant';
 import Button from '../../ui/Button';
+import { useSelector } from 'react-redux';
 
 // https://uibakery.io/regex-library/phone-number
 const isValidPhone = (str) =>
@@ -39,6 +40,7 @@ function CreateOrder() {
   const navigation = useNavigation();
   const isSubmitting = navigation.state === 'submitting';
   const formErrors = useActionData();
+  const username = useSelector((state) => state.user.username);
 
   // const [withPriority, setWithPriority] = useState(false);
   const cart = fakeCart;
@@ -54,6 +56,7 @@ function CreateOrder() {
           <input
             className="input grow"
             type="text"
+            defaultValue={username}
             name="customer"
             required
           />
@@ -63,7 +66,11 @@ function CreateOrder() {
           <label className="sm:basis-40">Phone number</label>
           <div className="grow">
             <input className="input w-full" type="tel" name="phone" required />
-            {formErrors?.phone && <p className='text-sm mt-2 text-red-700 bg-red-100 p-2 rounded-md'>{formErrors.phone}</p>}
+            {formErrors?.phone && (
+              <p className="mt-2 rounded-md bg-red-100 p-2 text-sm text-red-700">
+                {formErrors.phone}
+              </p>
+            )}
           </div>
         </div>
 
@@ -79,7 +86,7 @@ function CreateOrder() {
           </div>
         </div>
 
-        <div className='mb-12 flex items-center gap-5'>
+        <div className="mb-12 flex items-center gap-5">
           <input
             className="h-6 w-6 accent-yellow-400 focus:outline-none focus:ring focus:ring-yellow-400 focus:ring-offset-2"
             type="checkbox"
@@ -88,7 +95,9 @@ function CreateOrder() {
             // value={withPriority}
             // onChange={(e) => setWithPriority(e.target.checked)}
           />
-          <label htmlFor="priority" className='font-medium'>Want to yo give your order priority?</label>
+          <label htmlFor="priority" className="font-medium">
+            Want to yo give your order priority?
+          </label>
         </div>
 
         <div>
