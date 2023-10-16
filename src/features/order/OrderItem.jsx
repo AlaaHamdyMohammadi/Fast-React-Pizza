@@ -1,5 +1,8 @@
 /* eslint-disable no-undef */
 /* eslint-disable react/prop-types */
+
+import { formatCurrency } from "../../utils/helpers";
+
 /* eslint-disable no-unused-vars */
 function OrderItem({ item, isLoadingIngredients, ingredients }) {
   const { quantity, name, totalPrice } = item;

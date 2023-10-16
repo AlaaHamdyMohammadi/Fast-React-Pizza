@@ -10,6 +10,7 @@ import {
 } from '../../utils/helpers';
 import OrderItem from './OrderItem'
 
+
 const order = {
   id: "ABCDEF",
   customer: "Jonas",
@@ -58,6 +59,7 @@ function Order() {
     cart,
   } = order;
   const deliveryIn = calcMinutesLeft(estimatedDelivery);
+  
 
   return (
     <div className="space-y-8 px-6 py-6">
