@@ -10,6 +10,7 @@ import {
 } from '../../utils/helpers';
 import OrderItem from './OrderItem'
 import { useEffect } from 'react';
+import UpdateOrder from './UpdateOrder';
 
 
 const order = {
@@ -119,7 +120,8 @@ function Order() {
         <p className="font-bold">
           To pay on delivery: {formatCurrency(orderPrice + priorityPrice)}
         </p>
-      </div>
+        </div>
+        {!priority && <UpdateOrder order={order}/>}
     </div>
   );
 }
